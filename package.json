@@ -1,0 +1,19 @@
+{
+  "name": "cronogramas",
+  "version": "1.0.0",
+  "description": "Projeto Integrador Turma 2023.1 Programador de Sistemas SENAC GO CEP Cora Coralina",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daniellealmeidagms/cronogramas.git"
+  },
+  "author": "daniellealmeidagms",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/daniellealmeidagms/cronogramas/issues"
+  },
+  "homepage": "https://github.com/daniellealmeidagms/cronogramas#readme"
+}

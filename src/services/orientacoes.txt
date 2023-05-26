@@ -1,0 +1,2 @@
+A pasta SERVICES irá armazenar as funções 
+que conectam APP-BACKEND com BANCO DE DADOS.

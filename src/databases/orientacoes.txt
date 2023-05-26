@@ -1,0 +1,2 @@
+A pasta DATABASES irá armazenar os arquivos de conexão ao 
+Banco de Dados e do Mapeamento Objeto-Relacional.

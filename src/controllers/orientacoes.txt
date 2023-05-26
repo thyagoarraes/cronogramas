@@ -1,0 +1,2 @@
+A pasta CONTROLLERS irá armazenar as funções 
+que conectam APP-BACKEND com ROTAS HTTP.

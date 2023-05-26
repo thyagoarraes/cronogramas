@@ -1,0 +1,16 @@
+STACK TOOLS
+
+* Linguagem
+- JS (Javascript)
+
+* Banco de Dados 
+- PostgreSQL: Relacional
+
+* App Backend 
+- NodeJS: Framework
+- NPM: Gerenciador de pacotes (YARN)
+- Express: Servidor HTTP
+- TypeORM: Mapeamento Objeto-Relacional
+- Typescript: Forçar tipagem forte no JS
+
+

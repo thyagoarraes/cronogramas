@@ -1,4 +1,4 @@
-STACK TOOLS
+------- STACK TOOLS --------
 
 * Linguagem
 - JS (Javascript)
@@ -8,9 +8,62 @@ STACK TOOLS
 
 * App Backend 
 - NodeJS: Framework
-- NPM: Gerenciador de pacotes (YARN)
+- NPM: Gerenciador de pacotes (alternativa: YARN)
 - Express: Servidor HTTP
 - TypeORM: Mapeamento Objeto-Relacional
-- Typescript: Forçar tipagem forte no JS
+- Typescript: Forçar tipagem forte e estática no JS
+
+
+------- CRIAR NOVO PROJETO --------
+
+1º) Comandos Configuração Inicial
+
+npm init 	        inicializa o projeto criando arquivo package.json
+npm install 	    instala dependências/bibliotecas lado do cliente
+		              - express: servidor http
+		              - pg: driver de conexão com BD PostgreSQL
+                  - typeorm: mapeamento objeto-relacional
+                  - reflect-metadata: dependência do typeorm
+
+npm install -D	  instala dependências/bibliotecas lado do servidor
+                  - nodemon: reiniciar o servidor automaticamente após alterações
+                  - typescript: forçar tipagem forte e estática no JS 
+                  - ts-node: dependência do typescript
+                  - @types/express: dependência do typescript
+                  - @types/node: dependência do typescript
+
+
+2º) Estrutura de Pastas do Projeto
+
+* Databases: Arquivos de conexão ao(s) banco(s) de dados
+- Connections: Conectores de SGBDs
+- Models: Mapeamento de Entidades
+
+* Services: Arquivos de consulta ao banco de dados (DQL)
+
+* Controllers: Arquivos que linkam resultados da consulta com as rotas HTTP
+
+* Routes: Rotas de acesso aos recursos da aplicação
+
+DB -> DATABASES -> SERVICES -> CONTROLLERS -> ROUTES -> FRONTEND
+DB -> BACKEND 				                               -> FRONTEND
+
+
+3º) Inicializar Servidor
+
+- Criar arquivo index.ts
+- Criar script "start" no arquivo package.json
+
+
+
+
+
+
+
+
+
+
+
+
 
 

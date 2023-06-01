@@ -1,9 +1,27 @@
 {
-    "compilerOptions": {
-        "target":"ES5",
-        "module": "CommonJS",
-        "allowJs":true,
-        "outDir": "build",
-        "rootDir": "src"
-    }
+  "compilerOptions": {
+    "target": "ES2018",
+    "lib": ["es5", "es6", "ES2018"],
+    "module": "CommonJS",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "allowJs": true,
+    // "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "noImplicitAny": false,
+    "outDir": "build",
+    "rootDir": "src",
+    // "baseUrl": "./",
+    // "paths": {
+    //   //   "@controllers": ["controllers/*"],
+    //   //   "@connections": ["databases/connections"],
+    //   "@models": ["./src/databases/models/*"]
+    //   //   "@databases": ["databases/*"],
+    //   //   "@routes": ["routes/*"],
+    //   //   "@services": ["services/*"]
+    // }
+  },
+  "compileOnSave": true,
+  "include": ["./src/**/*.ts", "src/index.ts"],
+  "exclude": ["node_modules"]
 }

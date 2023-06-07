@@ -14,81 +14,88 @@ type newCursoRequest = {
   eixo: string
 }
 
+type updateCursoRequest = {
+  id_curso: string
+  descricao_curso: string
+  carga_horaria_curso: number
+  modalidade: string
+  eixo: string
+}
+
 type findOneCursoRequest = {
   id_curso: string
 }
 
-// 3) Classes CRUD
+// 3) Funções CRUD
 
-export class CreateCursoService {
-  // passa os dados da requisição como parametro do método "execute()"
-  async execute({
+export class CursoService {
+  async create({
     descricao_curso,
     carga_horaria_curso,
     modalidade,
     eixo,
   }: newCursoRequest): Promise<Curso | Error> {
-    // Se já existir um curso com a mesma descrição informada pelo usuário
-    // o sistema retornará uma mensagem de erro
     if (await cursor.findOne({ where: { descricao_curso } })) {
       return new Error("Curso já cadastrado!")
     }
 
-    // Cria um objeto (APP) para ser salvo como registro (BD)
     const curso = cursor.create({
-      descricao_curso, // Programador de Sistemas
-      carga_horaria_curso, // 200
-      modalidade, // Aperfeiçoamento
-      eixo, // Tecnologia da Informação
+      descricao_curso,
+      carga_horaria_curso,
+      modalidade,
+      eixo,
     })
 
-    // Faz um INSERT lá na tabela "curso"
-    // com os dados informados pelo usuário
     await cursor.save(curso)
 
-    // Devolve pro frontend o objeto criado da classe "Curso"
     return curso
   }
-}
 
-export class ReadAllCursoService {
-  async execute() {
-    // Executa a consulta "SELECT * FROM curso" no BD
-    // Armazena todos os registros do Result Set na variável "cursos"
-    // Neste caso, esta variável é uma lista de cursos
+  async readAll() {
     const cursos = await cursor.find()
     return cursos
   }
-}
 
-export class ReadOneCursoService {
-  // Recebe o ID do curso como parâmetro da Requisição do usuário
-  async execute({ id_curso }: findOneCursoRequest) {
-    // Vê se o curso existe na tabela no BD - SELECT * FROM curso WHERE id_curso = ??
+  async readOne({ id_curso }: findOneCursoRequest): Promise<Curso | Error> {
     const curso = await cursor.findOne({ where: { id_curso } })
-    // Se o curso não for encontrado no Result Set retorna um erro para o usuário
     if (!curso) {
       return new Error("Curso não encontrado!")
     }
-    // Se o curso for encontrado retorna para o usuário o curso
     return curso
   }
-}
 
-export class UpdateCursoService {}
-
-export class DeleteCursoService {
-  // Recebe o ID do curso como parâmetro da Requisição do usuário
-  async execute({ id_curso }: findOneCursoRequest) {
-    // Vê se o curso existe na tabela no BD - SELECT * FROM curso WHERE id_curso = ??
+  async update({
+    id_curso,
+    descricao_curso,
+    carga_horaria_curso,
+    modalidade,
+    eixo,
+  }: updateCursoRequest): Promise<Curso | Error> {
     const curso = await cursor.findOne({ where: { id_curso } })
-    // Se o curso não for encontrado no Result Set retorna um erro para o usuário
+    if (!curso) {
+      return new Error("Cliente não encontrado!")
+    }
+
+    curso.descricao_curso = descricao_curso
+      ? descricao_curso
+      : curso.descricao_curso
+    curso.carga_horaria_curso = carga_horaria_curso
+      ? carga_horaria_curso
+      : curso.carga_horaria_curso
+    curso.modalidade = modalidade ? modalidade : curso.modalidade
+    curso.eixo = eixo ? eixo : curso.eixo
+
+    await cursor.save(curso)
+
+    return curso
+  }
+
+  async delete({ id_curso }: findOneCursoRequest): Promise<Curso | Error> {
+    const curso = await cursor.findOne({ where: { id_curso } })
     if (!curso) {
       return new Error("Curso não encontrado!")
     }
-    // Se o curso for encontrado, deleta do BD - DELETE FROM curso WHERE id_curso = ??
-    await cursor.delete(curso)
-    // Retorna para o usuário o curso que foi deletado
+    await cursor.delete(curso.id_curso)
     return curso
   }
 }
